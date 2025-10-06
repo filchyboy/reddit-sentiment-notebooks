@@ -12,6 +12,7 @@ A comprehensive Reddit sentiment analysis tool with OAuth authentication, Tailsc
 - **Jupyter Notebooks**: Auto-generated analysis notebooks with methodology
 - **CLI Interface**: Simple command-line tools for all operations
 - **Data Export**: Multiple formats (JSON, CSV, Parquet) for further analysis
+- **Python 3.13 Compatible**: Works with the latest Python version
 
 ## Quick Start
 
@@ -19,11 +20,16 @@ A comprehensive Reddit sentiment analysis tool with OAuth authentication, Tailsc
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/filchyboy/reddit-sentiment-notebooks.git
 cd reddit-sentiment-notebooks
 
+# Create and activate virtual environment (recommended)
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
 # Install dependencies
-pip install -r requirements.txt
+# Note: Use requirements-core.txt for Python 3.13 compatibility
+pip install -r requirements-core.txt
 
 # Install spaCy English model (recommended)
 python -m spacy download en_core_web_sm

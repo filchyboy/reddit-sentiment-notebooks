@@ -74,7 +74,22 @@ class TextProcessor:
     
     def clean_text(self, text: str) -> str:
         """Clean text by removing URLs, normalizing whitespace, etc."""
-        if not text or pd.isna(text):
+        # Handle pandas NA values first
+        try:
+            if pd.isna(text):
+                return ""
+        except (TypeError, ValueError):
+            # Handle cases where pd.isna() fails (like with pd.NA)
+            if str(text).lower() in ['na', 'nan', '<na>']:
+                return ""
+
+        # Handle None and empty strings
+        if text is None:
+            return ""
+
+        # Convert to string and check if empty
+        text_str = str(text).strip()
+        if len(text_str) == 0:
             return ""
         
         text = str(text)
