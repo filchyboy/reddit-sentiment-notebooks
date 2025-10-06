@@ -172,17 +172,8 @@ class RedditAuth:
             
             return "❌ No authorization code received"
         
-        # Extract port from redirect URI
-        try:
-            port = 5000  # Default fallback
-            if ":" in self.redirect_uri:
-                port_part = self.redirect_uri.split(":")[-1]
-                if "/" in port_part:
-                    port = int(port_part.split("/")[0])
-                else:
-                    port = int(port_part)
-        except ValueError:
-            port = 5000
+        # Use port 1010 for local OAuth callback server (matches Tailscale Funnel config)
+        port = 1010
         
         console.print(f"🚀 Starting OAuth callback server on port {port}")
         
